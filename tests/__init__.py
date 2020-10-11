@@ -1,0 +1,1 @@
+"""NoPandas test package initialization."""

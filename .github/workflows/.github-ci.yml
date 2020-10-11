@@ -86,3 +86,17 @@ jobs:
     - name: Analyse shell scripts
       run: shellcheck ${{ steps.files.outputs.all }}
       if: steps.files.outputs.all
+
+  test:
+    runs-on: ubuntu-latest
+    needs: [python-lint, dockerfile-lint, shell-lint]
+
+    steps:
+    - name: Clone repo
+      uses: actions/checkout@v2
+
+    - name: Build environment
+      run: docker build -t nopandas .
+
+    - name: Run tests
+      run: docker run nopandas test
