@@ -35,7 +35,7 @@ jobs:
       if: steps.files.outputs.all
 
     - name: Analyse the documentation with pydocstyle
-      run: pydocstyle ${{steps.files.outputs.all}}
+      run: pydocstyle --ignore=D105,D407,D212,D203 ${{steps.files.outputs.all}}
       if: steps.files.outputs.all
 
 
