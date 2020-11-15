@@ -1,5 +1,6 @@
 """Functional tests."""
 
+import os
 import unittest
 
 
@@ -139,7 +140,10 @@ class TestBacisFunctionality:
 class TestBasicSQLiteFunctionality(unittest.TestCase, TestBacisFunctionality):
     """Test api with SQLite database."""
 
-    PATH_TO_SQLITE_DUMP = 'tests/assets/chinook.db'
+    PATH_TO_SQLITE_DUMP = os.path.join(
+        os.path.dirname(os.path.abspath(__file__)),
+        'assets/chinook.db'
+    )
 
     def setUp(self):
         """Create connection to DB."""
