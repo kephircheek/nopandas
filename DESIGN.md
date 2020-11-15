@@ -31,11 +31,17 @@ Let's season this with fast access to relation names.
 
 
 ## Experience
+
 ```python
->>> db = nopandas.sqlite.Connection('path/to/file')
->>> print(db.tables) # print list of relations in database
+>>> import sqlite3
+>>> conn = sqlite3.connect('path/to/file')
+>>> from nopandas.sqlite import Schema
+>>> schema = Schema(conn)
+>>> pring(schema)
+... availables relations and their columns ...
+>>> print(schema.tables) # print list of relations in schema
 ['MyTable', ]
->>> df = db['MyTable']
+>>> df = schema['MyTable']
 >>> df.query
 'SELECT * FROM MyTable;'
 >>> df.head(1)
